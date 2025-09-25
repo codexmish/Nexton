@@ -2,16 +2,16 @@ import React from "react";
 import { Link } from "react-router";
 import { ImCross } from "react-icons/im";
 
-const Cart = ({ cartok }) => {
+const Cart = ({ cartok, isopen }) => {
   return (
     <>
-      <section className="w-full h-screen absolute top-0 left-0 z-10">
+      <section className="w-full h-screen absolute top-0 left-0 z-10 duration-[4s]">
         <div
           onClick={() => cartok(false)}
           className="w-full h-screen bg-[#0000006c]"
         ></div>
 
-        <div className="w-100 h-screen bg-white absolute top-0 right-0 p-5 ">
+        <div className={`w-100 h-screen bg-white absolute top-0 p-5 ${isopen? "right-0" : 'right-[-100px]'} duration-[4s] `}>
           <div className="flex items-center justify-between">
             <h2 className="text-xl text-primary font-medium font-popppind ">
               Cart
@@ -22,8 +22,8 @@ const Cart = ({ cartok }) => {
             />
           </div>
 
-          <div className="w-full h-[800px] overflow-y-scroll">
             {/* ----Cart Product--- */}
+          <div className='w-full h-[800px] overflow-y-scroll'>
             <div className="flex gap-5 items-center mt-5">
               <div className="w-10 h-10 rounded-[5px] bg-gray-200">
                 {/* <img src="" alt="" /> */}
