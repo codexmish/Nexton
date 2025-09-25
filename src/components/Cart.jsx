@@ -11,7 +11,7 @@ const Cart = ({ cartok, isopen }) => {
           className="w-full h-screen bg-[#0000006c]"
         ></div>
 
-        <div className={`w-100 h-screen bg-white absolute top-0 p-5 ${isopen? "right-0" : 'right-[-100px]'} duration-[4s] `}>
+        <div className={`w-full lg:w-100 h-screen bg-white absolute top-0 p-5 ${isopen? "right-0" : 'right-[-100px]'} duration-[4s] `}>
           <div className="flex items-center justify-between">
             <h2 className="text-xl text-primary font-medium font-popppind ">
               Cart
