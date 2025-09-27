@@ -5,7 +5,7 @@ import { Link } from "react-router";
 const CommonBanner = ({ hero, textOne, textTwo }) => {
   return (
     <>
-      <div className="bg-[#f3f3f3] ">
+      <div className="bg-[#f3f3f3] container ">
         <div className="container mx-6 lg:mx-0">
           <div className="main-row flex justify-between items-center h-[550px] lg:h-fit">
             <div className="text">
