@@ -10,28 +10,43 @@ const Brandinfo = () => {
     <>
       <section className="pt-13 pb-8">
         <div className="container">
-            <div className="flex items-center justify-between border border-border rounded-[16px] py-6">
-                <div className="in1 border-r-2 border-r-border w-full">
+          <h2 className="text-primary text-base font-popppind font-semibold px-3 lg:hidden">
+            Nexton® always with you
+          </h2>
 
-          <CommonDetails icon={<LiaShippingFastSolid />} title={'Free shipping'} text={'On orders over $50.00'}/>
-                </div>
-
-                <div className="in2 border-r-2 border-r-border w-full">
-
-          <CommonDetails icon={<MdSwapCalls />} title={'Very easy to return'} text={'Just phone number'}/>
-                </div>
-
-                <div className="in3 border-r-2 border-r-border w-full">
-
-          <CommonDetails icon={<TfiWorld />} title={'Worldwide delivery'} text={'Fast delivery worldwide'}/>
-                </div>
-
-                <div className="in4 w-full">
-
-          <CommonDetails icon={<RiRefund2Fill />} title={'Refunds policy'} text={'60 days return for any reason'}/>
-                </div>
-
+          <div className="flex flex-wrap items-center justify-between lg:border border-border rounded-[16px] py-6 px-3 lg:px-10">
+            <div className="in1 lg:border-r-2 border-r-border">
+              <CommonDetails
+                icon={<LiaShippingFastSolid />}
+                title={"Free shipping"}
+                text={"On orders over $50.00"}
+              />
             </div>
+
+            <div className="in2 lg:border-r-2 border-r-border">
+              <CommonDetails
+                icon={<MdSwapCalls />}
+                title={"Very easy to return"}
+                text={"Just phone number"}
+              />
+            </div>
+
+            <div className="in3 lg:border-r-2 border-r-border w-[300px] lg:w-[303px] mt-6">
+              <CommonDetails
+                icon={<TfiWorld />}
+                title={"Worldwide delivery"}
+                text={"Fast delivery worldwide"}
+              />
+            </div>
+
+            <div className="in4 mt-6">
+              <CommonDetails
+                icon={<RiRefund2Fill />}
+                title={"Refunds policy"}
+                text={"60 days return for any reason"}
+              />
+            </div>
+          </div>
         </div>
       </section>
     </>
