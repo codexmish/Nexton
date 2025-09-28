@@ -6,7 +6,7 @@ const CommonBanner = ({ hero, textOne, textTwo }) => {
   return (
     <>
       <div className="bg-[#f3f3f3] container ">
-        <div className="container mx-6 lg:mx-0">
+        <div className="container px-3 lg:mx-0">
           <div className="main-row flex justify-between items-center h-[550px] lg:h-fit">
             <div className="text">
               <h3 className="text-sm lg:text-[20px] text-secoundary font-medium font-popppind">
@@ -17,9 +17,9 @@ const CommonBanner = ({ hero, textOne, textTwo }) => {
               </h2>
               <Link
                 to={"/"}
-                className="flex justify-center items-center bg-primary text-white w-[198px] h-[64px] rounded-[9999px] gap-3"
+                className="flex justify-center items-center bg-primary text-white w-[156px] lg:w-[198px] h-11 lg:h-[64px] rounded-[9999px] gap-3 text-sm lg:text-[16px]"
               >
-                Explore now <CiSearch className="text-6xl text-whitetext" />
+                Explore now <CiSearch className="text-xl lg:text-[24px]  text-white" />
               </Link>
             </div>
 
