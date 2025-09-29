@@ -10,6 +10,7 @@ import { MdMenu } from "react-icons/md";
 const ResNav = () => {
 
     const [showCart, setShowCart] = useState(false);
+    const [showButton, setShowButton] = useState(false);
 
 
   return (
@@ -34,12 +35,25 @@ const ResNav = () => {
             <div className="icons flex items-center gap-6">
 
                 <button
-                onClick={() => setShowCart(true)}
+                onClick={() => setShowButton(!showButton)}
                 className="cursor-pointer relative"
               >
                 <MdMenu className="text-2xl text-secoundary" />
               </button> 
-              {/* <button className="cursor-pointer">
+
+
+              
+            
+            </div>
+          </div>
+
+          {
+            showButton&&(
+
+          <div className=''>
+            <div className='flex items-center justify-center mt-6'>
+
+              <button className="cursor-pointer">
                 <RiUserLine className="text-2xl text-secoundary" />
               </button>
               <button
@@ -50,9 +64,16 @@ const ResNav = () => {
                 <div className="h-5 w-5 rounded-full bg-[#0EA5E9] flex justify-center items-center absolute top-[-8px] right-[-8px]">
                   3
                 </div>
-              </button> */}
+              </button>
+
+
+
             </div>
+            
           </div>
+            )
+          }
+
         </div>
 
         {showCart && <Cart cartok={setShowCart} isopen={showCart} />}
