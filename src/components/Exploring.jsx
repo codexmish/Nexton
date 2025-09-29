@@ -1,93 +1,111 @@
 import React from "react";
 import CommonExplore from "./Common/CommonExplore";
-
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
-import "swiper/css";
-
-import "swiper/css/pagination";
-
-import { Pagination } from "swiper/modules";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
 
 const Exploring = () => {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    arrows: false,
+    responsive: [
+      {
+        breakpoint: 1280,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 360,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 320,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+
   return (
     <>
-      <section className="exploeing pt-[168px] pb-[143px]">
-        <div className="container">
-          <Swiper
-            spaceBetween={20}
-            slidesPerView={3}
-            onSlideChange={() => console.log("slide change")}
-            onSwiper={(swiper) => console.log(swiper)}
-            pagination={{
-              dynamicBullets: true,
-            }}
-            breakpoints={{
-              320: {
-                slidesPerView: 1,
-                spaceBetween: 20,
-              },
-              640: {
-                slidesPerView: 1,
-                spaceBetween: 20,
-              },
-              768: {
-                slidesPerView: 2,
-                spaceBetween: 40,
-              },
-              1024: {
-                slidesPerView: 3,
-                spaceBetween: 50,
-              },
-            }}
-            modules={[Pagination]}
-            className="mySwiper"
-          >
-            <SwiperSlide>
+      <section className="exploeing pt-13 lg:pt-[168px] pb-13 lg:pb-[143px]">
+        <div className="container expo">
+          <Slider {...settings}>
+            <div>
               <CommonExplore
                 head={"For Men's"}
                 text={"Starting at $24"}
                 linkk={"/"}
               />
-            </SwiperSlide>
-            <SwiperSlide>
+            </div>
+            <div>
               <CommonExplore
                 head={"For Women's"}
                 text={"Starting at $19"}
                 linkk={"/"}
               />
-            </SwiperSlide>
-            <SwiperSlide>
+            </div>
+            <div>
               <CommonExplore
                 head={"Accessories"}
                 text={"Explore accessories"}
                 linkk={"/"}
               />
-            </SwiperSlide>
-            <SwiperSlide>
+            </div>
+            <div>
               <CommonExplore
                 head={"For Men's"}
                 text={"Starting at $24"}
                 linkk={"/"}
               />
-            </SwiperSlide>
-            <SwiperSlide>
+            </div>
+            <div>
               <CommonExplore
-                head={"For Women's"}
-                text={"Starting at $19"}
+                head={"For Men's"}
+                text={"Starting at $24"}
                 linkk={"/"}
               />
-            </SwiperSlide>
-            <SwiperSlide>
+            </div>
+            <div>
               <CommonExplore
                 head={"Accessories"}
                 text={"Explore accessories"}
                 linkk={"/"}
               />
-            </SwiperSlide>
-          </Swiper>
+            </div>
+          </Slider>
         </div>
       </section>
     </>
