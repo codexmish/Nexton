@@ -4,6 +4,7 @@ import Brandinfo from "../components/Brandinfo";
 import Exploring from "../components/Exploring";
 import Recommendation from "../components/Recommendation";
 import Sellers from "../components/Sellers";
+import OrgBanner from "../components/OrgBanner";
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       <Exploring />
       <Recommendation/>
       <Sellers/>
+      <OrgBanner/>
     </>
   );
 };
