@@ -2,6 +2,7 @@ import React from "react";
 import CommonExplore from "./Common/CommonExplore";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
+import CommonHead from "./Common/CommonHead";
 
 const Exploring = () => {
   const settings = {
@@ -62,7 +63,12 @@ const Exploring = () => {
     <>
       <section className="exploeing pt-13 lg:pt-[168px] pb-13 lg:pb-[143px]">
         <div className="container expo">
-          <Slider {...settings}>
+          <CommonHead
+            text1={"Start exploring. "}
+            text2={"Good things are waiting for you"}
+          />
+
+          <Slider className="mt-10" {...settings}>
             <div>
               <CommonExplore
                 head={"For Men's"}
