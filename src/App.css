@@ -80,3 +80,34 @@
 .expo .slick-dots .slick-active button {
   background: #111827;
 }
+
+
+
+/*----------------Exploring css------- */
+
+
+.reco {
+  position: relative;
+}
+
+.reco .slick-dots {
+  display: flex !important;
+  gap: 12px;
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.reco .slick-dots li button {
+  font-size: 0;
+  width: 8px;
+  height: 8px;
+  background: var(--color-secoundary);
+  border-radius: 50%;
+}
+
+.reco .slick-dots .slick-active button {
+  background: #111827;
+}
+
