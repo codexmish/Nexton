@@ -10,6 +10,7 @@ const Exploring = () => {
 
   useEffect(() => {
     const handleResize = () => {
+      // console.log(window)
       const w = window.innerWidth;
       if (w <= 360) setSlidesToShow(1);
       else if (w <= 620) setSlidesToShow(1);
