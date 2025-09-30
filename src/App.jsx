@@ -3,14 +3,14 @@ import './App.css'
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router'
 import LayoutOne from './Layouts/LayoutOne'
 import Home from './pages/Home'
-import SingleProduct from './pages/SingleProduct'
+import ProductDetails from './pages/ProductDetails'
 
 const App = () => {
 
   const myRoute = createBrowserRouter(createRoutesFromElements(
     <Route path='/' element={<LayoutOne/>}>
       <Route index element={<Home/>}/>
-      <Route path='/singleproduct' element={<SingleProduct/>} />
+      <Route path='/productdetails' element={<ProductDetails/>} />
 
 
     </Route>
