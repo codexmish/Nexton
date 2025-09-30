@@ -10,7 +10,7 @@ const App = () => {
   const myRoute = createBrowserRouter(createRoutesFromElements(
     <Route path='/' element={<LayoutOne/>}>
       <Route index element={<Home/>}/>
-      <Route path='/singleproducts' element={<SingleProduct/>} />
+      <Route path='/singleproduct' element={<SingleProduct/>} />
 
 
     </Route>

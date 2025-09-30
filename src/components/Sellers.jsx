@@ -37,7 +37,8 @@ const Sellers = () => {
   const [allProductes, setAllProduces] = useState([]);
 
   useEffect(() => {
-    axios.get("https://dummyjson.com/products")
+    axios
+      .get("https://dummyjson.com/products")
       .then((res) => {
         setAllProduces(res.data.products);
         console.log(res);

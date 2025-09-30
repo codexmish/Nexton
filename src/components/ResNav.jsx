@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import logo from "../assets/images/favicon.png";
 import { CiSearch } from "react-icons/ci";
 import { RiUserLine } from "react-icons/ri";
@@ -8,15 +8,12 @@ import Cart from "./Cart";
 import { MdMenu } from "react-icons/md";
 
 const ResNav = () => {
-
-    const [showCart, setShowCart] = useState(false);
-    const [showButton, setShowButton] = useState(false);
-
+  const [showCart, setShowCart] = useState(false);
+  const [showButton, setShowButton] = useState(false);
 
   return (
     <>
-
-    <nav className="mt-8 mb-9 px-3 lg:hidden">
+      <nav className="mt-8 mb-9 px-3 lg:hidden">
         <div className="container">
           <div className="main flex items-center justify-between">
             <Link to={"/"} className="logo w-[24px]">
@@ -33,54 +30,39 @@ const ResNav = () => {
             </div>
 
             <div className="icons flex items-center gap-6">
-
-                <button
+              <button
                 onClick={() => setShowButton(!showButton)}
                 className="cursor-pointer relative"
               >
                 <MdMenu className="text-2xl text-secoundary" />
-              </button> 
-
-
-              
-            
+              </button>
             </div>
           </div>
 
-          {
-            showButton&&(
-
-          <div className=''>
-            <div className='flex items-center justify-center mt-6'>
-
-              <button className="cursor-pointer">
-                <RiUserLine className="text-2xl text-secoundary" />
-              </button>
-              <button
-                onClick={() => setShowCart(true)}
-                className="cursor-pointer relative"
-              >
-                <BsCartDash className="text-2xl text-secoundary" />
-                <div className="h-5 w-5 rounded-full bg-[#0EA5E9] flex justify-center items-center absolute top-[-8px] right-[-8px]">
-                  3
-                </div>
-              </button>
-
-
-
+          {showButton && (
+            <div className="">
+              <div className="flex items-center justify-center mt-6">
+                <button className="cursor-pointer">
+                  <RiUserLine className="text-2xl text-secoundary" />
+                </button>
+                <button
+                  onClick={() => setShowCart(true)}
+                  className="cursor-pointer relative"
+                >
+                  <BsCartDash className="text-2xl text-secoundary" />
+                  <div className="h-5 w-5 rounded-full bg-[#0EA5E9] flex justify-center items-center absolute top-[-8px] right-[-8px]">
+                    3
+                  </div>
+                </button>
+              </div>
             </div>
-            
-          </div>
-            )
-          }
-
+          )}
         </div>
 
         {showCart && <Cart cartok={setShowCart} isopen={showCart} />}
       </nav>
-    
     </>
-  )
-}
+  );
+};
 
-export default ResNav
+export default ResNav;
