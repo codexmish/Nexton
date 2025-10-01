@@ -5,7 +5,7 @@ import { HiShoppingBag } from "react-icons/hi";
 const ProductDetails = () => {
   return (
     <>
-      <section id="productdetails">
+      <section id="productdetails" className="pt-10 pb-13">
         <div className="container">
           <div className="product-row flex justify-between">
             {/* ------------Product image part----- */}
@@ -31,7 +31,7 @@ const ProductDetails = () => {
                   </p>
                 </div>
 
-                <div className="price">
+                <div className="price text-end">
                   <h2 className="text-2xl text-primary font-semibold font-popppind">
                     $169.99
                   </h2>
@@ -86,6 +86,22 @@ const ProductDetails = () => {
                     <HiShoppingBag />
                     Add to cart
                 </button>
+              </div>
+
+              <div className="det flex items-center justify-between mt-8 pb-4 border-b border-b-border">
+                <div className="l-text mb-[10px]">
+                  <p className="text-base text-secoundary font-normal font-popppind">$169.99 x 1</p>
+                  <p className="text-base text-secoundary font-normal font-popppind">Tax estimate</p>
+                </div>
+                <div className="r-text mb-[10px] text-end">
+                  <p className="text-base text-secoundary font-normal font-popppind">$169.99</p>
+                  <p className="text-base text-secoundary font-normal font-popppind">$0</p>
+                </div>
+              </div>
+
+              <div className="total flex items-center justify-between mt-4">
+                <h2 className="text-base text-primary font-semibold font-popppind">Total</h2>
+                <h2 className="text-base text-primary font-semibold font-popppind">$169.99</h2>
               </div>
 
 
