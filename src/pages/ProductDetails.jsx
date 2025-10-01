@@ -1,4 +1,5 @@
 import React from "react";
+import { BsStars } from "react-icons/bs";
 import { FaMinus, FaPlus, FaStar } from "react-icons/fa";
 import { HiShoppingBag } from "react-icons/hi";
 
@@ -9,7 +10,7 @@ const ProductDetails = () => {
         <div className="container">
           <div className="product-row flex justify-between">
             {/* ------------Product image part----- */}
-            <div className="product-images flex gap-6">
+            <div className="product-images flex gap-6 pb-13 border-b border-b-border">
               <div className="flex flex-col gap-4">
                 <button className="w-[140px] h-[157px] rounded-2xl overflow-hidden bg-gray-200"></button>
                 <button className="w-[140px] h-[157px] rounded-2xl overflow-hidden bg-gray-200"></button>
@@ -104,6 +105,58 @@ const ProductDetails = () => {
                 <h2 className="text-base text-primary font-semibold font-popppind">$169.99</h2>
               </div>
 
+
+            </div>
+          </div>
+
+
+          {/* ---Product description---- */}
+
+          <div className="mt-[108px] flex flex-col gap-15">
+            <div>
+            <h2 className="text-4xl text-primary font-semibold font-popppind">Black Automatic Watch</h2>
+            <p className="text-base text-secoundary font-normal font-popppind max-w-[735px] mt-1">The St. Louis Meramec Canoe Company was founded by Alfred Wickett in 1922. Wickett had previously worked for the Old Town Canoe Co from 1900 to 1914. Manufacturing of the classic wooden canoes in Valley Park, Missouri ceased in 1978.</p>
+
+            </div>
+
+            <div>
+            <h2 className="text-4xl text-primary font-semibold font-popppind">Fabric + Care</h2>
+            <p className="text-base text-secoundary font-normal font-popppind max-w-[735px] mt-1">Material: Soft wool blend</p>
+            <p className="text-base text-secoundary font-normal font-popppind max-w-[735px] mt-1">Color: Various</p>
+
+            </div>
+
+            <div>
+            <h2 className="text-4xl text-primary font-semibold font-popppind">Sale performance</h2>
+            <p className="text-base text-secoundary font-normal font-popppind max-w-[735px] mt-1">Sales: 0</p>
+            <p className="text-base text-secoundary font-normal font-popppind max-w-[735px] mt-1">Review Count: -</p>
+            <p className="text-base text-secoundary font-normal font-popppind max-w-[735px] mt-1">Review Average: -</p>
+
+            </div>
+
+            <div>
+            <h2 className="text-4xl text-primary font-semibold font-popppind">Keywords</h2>
+            <div className="flex items-center gap-2">
+              <div className="px-[14px] py-2 flex border border-border rounded-full mt-2">
+                <BsStars className=""/>
+                <p className="text-[12px] text-secoundary font-normal font-popppind">men's fashion</p>
+              </div>
+
+              <div className="px-[14px] py-2 flex border border-border rounded-full mt-2">
+                <BsStars className=""/>
+                <p className="text-[12px] text-secoundary font-normal font-popppind">winter hat</p>
+              </div>
+
+              <div className="px-[14px] py-2 flex border border-border rounded-full mt-2">
+                <BsStars className=""/>
+                <p className="text-[12px] text-secoundary font-normal font-popppind">colorful accessory</p>
+              </div>
+
+              <div className="px-[14px] py-2 flex border border-border rounded-full mt-2">
+                <BsStars className=""/>
+                <p className="text-[12px] text-secoundary font-normal font-popppind">warm headwear</p>
+              </div>
+            </div>
 
             </div>
           </div>
