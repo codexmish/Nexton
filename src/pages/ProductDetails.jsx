@@ -1,23 +1,81 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BsStars } from "react-icons/bs";
 import { FaMinus, FaPlus, FaStar } from "react-icons/fa";
 import { HiShoppingBag } from "react-icons/hi";
+import CommonHead from "../components/Common/CommonHead";
+import Recommendation from "../components/Recommendation";
+import Slider from "react-slick";
+import axios from "axios";
+import ProductCard from "../components/Common/ProductCard";
 
 const ProductDetails = () => {
+
+
+
+
+  const [slidesToShow, setSlidesToShow] = useState(3);
+
+  useEffect(() => {
+    const handleResize = () => {
+      // console.log(window)
+      const w = window.innerWidth;
+      if (w <= 360) setSlidesToShow(1);
+      else if (w <= 620) setSlidesToShow(1);
+      else if (w <= 768) setSlidesToShow(2);
+      else if (w <= 1024) setSlidesToShow(2);
+      else if (w <= 1289) setSlidesToShow(4);
+      else setSlidesToShow(4);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    // slidesToShow: 4,
+    slidesToShow,
+    slidesToScroll: 1,
+    arrows: false,
+  };
+
+  const [allProductes, setAllProduces] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("https://dummyjson.com/products")
+      .then((res) => {
+        setAllProduces(res.data.products);
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+
+
+
+
+
+
   return (
     <>
       <section id="productdetails" className="pt-10 pb-13">
         <div className="container">
           <div className="product-row flex justify-between">
             {/* ------------Product image part----- */}
-            <div className="product-images flex gap-6 pb-13 border-b border-b-border">
+            <div className="product-images flex gap-6 pb-13 border-b border-b-border flex-wrap ">
               <div className="flex flex-col gap-4">
                 <button className="w-[140px] h-[157px] rounded-2xl overflow-hidden bg-gray-200"></button>
                 <button className="w-[140px] h-[157px] rounded-2xl overflow-hidden bg-gray-200"></button>
                 <button className="w-[140px] h-[157px] rounded-2xl overflow-hidden bg-gray-200"></button>
                 <button className="w-[140px] h-[157px] rounded-2xl overflow-hidden bg-gray-200"></button>
               </div>
-              <div className="image w-[640px] h-[678px] bg-gray-200 rounded-2xl">
+              <div className="image w-[640px] h-[678px] bg-gray-200 rounded-2xl ">
                 {/* <img src="" alt="" /> */}
               </div>
             </div>
@@ -160,7 +218,39 @@ const ProductDetails = () => {
 
             </div>
           </div>
+
+
+
+        {/* Recommended products */}
+
+        <div className="mt-[96px]">
+          <CommonHead text1={'Recommended products'}/>
+
+          <div className="reco mb-[96px] px-3 lg:px-0">
+
+          <Slider className="pt-10" {...settings}>
+            {allProductes.slice(0, 9).map((item) => (
+              <div>
+                <ProductCard
+                  key={item.id}
+                  title={item.title}
+                  price={item.price}
+                  category={item.category}
+                  discount={item.discountPercentage}
+                  rating={item.rating}
+                  stock={item.stock}
+                  image={item.thumbnail}
+                />
+              </div>
+            ))}
+          </Slider>
+          </div>
+          
+
         </div>
+
+        </div>
+
       </section>
     </>
   );
