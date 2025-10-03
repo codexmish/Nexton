@@ -1,5 +1,7 @@
 import React from "react";
 import { FaStar } from "react-icons/fa";
+import { IoBagHandleOutline } from "react-icons/io5";
+import { TbListDetails } from "react-icons/tb";
 
 const ProductCard = ({image ,title ,price ,category ,discount ,rating ,stock}) => {
   // // -----------Text Truncation PRO process
@@ -24,8 +26,15 @@ const ProductCard = ({image ,title ,price ,category ,discount ,rating ,stock}) =
   return (
     <>
       <div className="w-fit lg:w-[309px] h-[448px]">
-        <div className="w-full h-[337px] bg-gray-100 rounded-2xl overflow-hidden">
+        <div className="w-full h-[337px] bg-gray-100 rounded-2xl overflow-hidden relative group">
           <img src={image} alt="ItemImage" />
+
+          {/* --------hover icons--- */}
+
+          <div className="hover-icobs cursor-pointer absolute text-3xl flex flex-col gap-4 top-20 right-[-50px] group-hover:right-4">
+          <IoBagHandleOutline />
+          <TbListDetails />
+        </div>
         </div>
         <div className="flex items-center justify-between mt-5">
           <h2 className="text-base text-black font-semibold font-popppind">
@@ -51,6 +60,9 @@ const ProductCard = ({image ,title ,price ,category ,discount ,rating ,stock}) =
             {rating}({stock})
           </p>
         </div>
+
+
+        
       </div>
     </>
   );
