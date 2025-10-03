@@ -31,12 +31,16 @@ const ProductCard = ({image ,title ,price ,category ,discount ,rating ,stock}) =
 
           {/* --------hover icons--- */}
 
-          <div className="hover-icobs cursor-pointer absolute text-3xl flex flex-col gap-4 top-20 right-[-50px] group-hover:right-4">
+          <div className="hover-icobs cursor-pointer absolute text-white text-3xl flex flex-col gap-4 top-20 right-[-50px] group-hover:right-4 duration-[.4s] z-10">
           <IoBagHandleOutline />
           <TbListDetails />
         </div>
+
+        {/* --------Black overlay----- */}
+        <div className="w-full h-full group-hover:bg-[#0000008f] absolute top-0 left-0 duration-[.4s]">
         </div>
-        <div className="flex items-center justify-between mt-5">
+        </div>
+        <div className="flex items-center justify-between mt-5 cursor-pointer">
           <h2 className="text-base text-black font-semibold font-popppind">
             {truncateText(title, 20)}
           </h2>
