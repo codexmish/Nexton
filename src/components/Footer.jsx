@@ -161,7 +161,7 @@ const Footer = () => {
             <Link className="brand-3">
               <img src={stripe} alt="brand" />{" "}
             </Link>
-            <Link vclassName="brand-4">
+            <Link className="brand-4">
               <img src={verisign} alt="brand" />
             </Link>
           </div>

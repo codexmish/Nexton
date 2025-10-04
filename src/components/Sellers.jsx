@@ -41,7 +41,7 @@ const Sellers = () => {
       .get("https://dummyjson.com/products")
       .then((res) => {
         setAllProduces(res.data.products);
-        console.log(res);
+        // console.log(res);
       })
       .catch((err) => {
         console.log(err);

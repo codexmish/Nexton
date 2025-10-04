@@ -3,6 +3,7 @@ import ProductCard from "./Common/ProductCard";
 import axios from "axios";
 import Slider from "react-slick";
 import CommonHead from "./Common/CommonHead";
+import { useNavigate } from "react-router";
 
 const Recommendation = () => {
   const [slidesToShow, setSlidesToShow] = useState(3);
@@ -41,12 +42,37 @@ const Recommendation = () => {
       .get("https://dummyjson.com/products")
       .then((res) => {
         setAllProduces(res.data.products);
-        console.log(res);
+        // console.log(res);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
+
+
+
+
+
+  const navigate = useNavigate();
+
+
+  const handleDetails =(id)=>{
+    console.log(id)
+    navigate(`/productdetails/${id}`)
+
+  };
+
+
+
+
+
+
+
+
+
+
+
+
 
   return (
     <>
@@ -69,6 +95,7 @@ const Recommendation = () => {
                   rating={item.rating}
                   stock={item.stock}
                   image={item.thumbnail}
+                  detailsClick={()=>handleDetails(item.id)}
                 />
               </div>
             ))}

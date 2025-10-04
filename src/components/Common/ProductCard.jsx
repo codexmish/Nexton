@@ -2,8 +2,18 @@ import React from "react";
 import { FaStar } from "react-icons/fa";
 import { IoBagHandleOutline } from "react-icons/io5";
 import { TbListDetails } from "react-icons/tb";
+import { Link } from "react-router";
 
-const ProductCard = ({image ,title ,price ,category ,discount ,rating ,stock}) => {
+const ProductCard = ({
+  image,
+  title,
+  price,
+  category,
+  discount,
+  rating,
+  stock,
+  detailsClick
+}) => {
   // // -----------Text Truncation PRO process
 
   // function truncateText(text, maxLength) {
@@ -31,14 +41,17 @@ const ProductCard = ({image ,title ,price ,category ,discount ,rating ,stock}) =
 
           {/* --------hover icons--- */}
 
-          <div className="hover-icobs cursor-pointer absolute text-white text-3xl flex flex-col gap-4 top-20 right-[-50px] group-hover:right-4 duration-[.4s] z-10">
-          <IoBagHandleOutline />
-          <TbListDetails />
-        </div>
+          <div className="hover-icobs cursor-pointer absolute text-white text-3xl flex flex-col gap-4 top-10 right-[-50px] group-hover:right-4 duration-[.4s] z-10">
+            <button className="cursor-pointer">
+              <IoBagHandleOutline />
+            </button>
+            <button className="cursor-pointer" onClick={detailsClick}>
+              <TbListDetails />
+            </button>
+          </div>
 
-        {/* --------Black overlay----- */}
-        <div className="w-full h-full group-hover:bg-[#0000008f] absolute top-0 left-0 duration-[.4s]">
-        </div>
+          {/* --------Black overlay----- */}
+          <div className="w-full h-full group-hover:bg-[#0000008f] absolute top-0 left-0 duration-[.4s]"></div>
         </div>
         <div className="flex items-center justify-between mt-5 cursor-pointer">
           <h2 className="text-base text-black font-semibold font-popppind">
@@ -64,9 +77,6 @@ const ProductCard = ({image ,title ,price ,category ,discount ,rating ,stock}) =
             {rating}({stock})
           </p>
         </div>
-
-
-        
       </div>
     </>
   );
