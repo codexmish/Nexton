@@ -7,9 +7,24 @@ import Recommendation from "../components/Recommendation";
 import Slider from "react-slick";
 import axios from "axios";
 import ProductCard from "../components/Common/ProductCard";
+import { useParams } from "react-router";
 
 const ProductDetails = () => {
   const [slidesToShow, setSlidesToShow] = useState(3);
+  const [spro, setSPro] = useState("");
+  const [thumbnail, setThembnail] = useState("");
+
+  const paramData = useParams();
+  // console.log(paramData)
+
+  useEffect(() => {
+    axios
+      .get(`https://dummyjson.com/products/${paramData.next}`)
+      .then((res) => {
+        setSPro(res.data), setThembnail(res.data.images?.[0]);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -45,7 +60,7 @@ const ProductDetails = () => {
       .get("https://dummyjson.com/products")
       .then((res) => {
         setAllProduces(res.data.products);
-        console.log(res);
+        // console.log(res);
       })
       .catch((err) => {
         console.log(err);
@@ -60,13 +75,18 @@ const ProductDetails = () => {
             {/* ------------Product image part----- */}
             <div className="product-images flex gap-6 pb-13 border-b border-b-border flex-wrap ">
               <div className="flex lg:flex-col gap-2 lg:gap-4 order-2 lg:order-0">
-                <button className="w-[70px] lg:w-[140px] h-[78px] lg:h-[157px] rounded-2xl overflow-hidden bg-gray-200"></button>
-                <button className="w-[70px] lg:w-[140px] h-[78px] lg:h-[157px] rounded-2xl overflow-hidden bg-gray-200"></button>
-                <button className="w-[70px] lg:w-[140px] h-[78px] lg:h-[157px] rounded-2xl overflow-hidden bg-gray-200"></button>
-                <button className="w-[70px] lg:w-[140px] h-[78px] lg:h-[157px] rounded-2xl overflow-hidden bg-gray-200"></button>
+                {spro.images?.map((item, index) => (
+                  <button
+                    onClick={() => setThembnail(item)}
+                    key={index}
+                    className="w-[70px] lg:w-[140px] h-[78px] lg:h-[157px] rounded-2xl overflow-hidden bg-gray-200"
+                  >
+                    <img src={item} alt="" />
+                  </button>
+                ))}
               </div>
               <div className="image w-[312px] lg:w-[640px] h-[330px] lg:h-[678px] bg-gray-200 rounded-2xl">
-                {/* <img src="" alt="" /> */}
+                <img src={thumbnail} alt="thumbnailImage" />
               </div>
             </div>
 

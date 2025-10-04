@@ -57,7 +57,7 @@ const Recommendation = () => {
 
 
   const handleDetails =(id)=>{
-    console.log(id)
+    // console.log(id)
     navigate(`/productdetails/${id}`)
 
   };
