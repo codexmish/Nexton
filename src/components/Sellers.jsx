@@ -3,6 +3,7 @@ import ProductCard from "./Common/ProductCard";
 import axios from "axios";
 import Slider from "react-slick";
 import CommonHead from "./Common/CommonHead";
+import { useNavigate } from "react-router";
 
 const Sellers = () => {
   const [slidesToShow, setSlidesToShow] = useState(3);
@@ -48,6 +49,15 @@ const Sellers = () => {
       });
   }, []);
 
+
+  const navigate = useNavigate();
+  
+  
+    const handleDetails =(id)=>{
+      navigate(`/productdetails/${id}`)
+  
+    };
+
   return (
     <>
       <section className="sellers py-22 px-3 lg:px-0">
@@ -69,6 +79,7 @@ const Sellers = () => {
                   rating={item.rating}
                   stock={item.stock}
                   image={item.thumbnail}
+                  detailsClick={()=>handleDetails(item.id)}
                 />
               </div>
             ))}

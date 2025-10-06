@@ -7,7 +7,6 @@ import { useNavigate } from "react-router";
 
 const Recommendation = () => {
   const [slidesToShow, setSlidesToShow] = useState(3);
-  // window.scrollTo(0, 0);
 
   useEffect(() => {
     const handleResize = () => {
@@ -59,7 +58,6 @@ const Recommendation = () => {
 
   const handleDetails =(id)=>{
     navigate(`/productdetails/${id}`)
-    // window.scrollTo(0, 0);
 
   };
 
