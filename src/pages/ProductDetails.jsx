@@ -13,7 +13,7 @@ const ProductDetails = () => {
   const [slidesToShow, setSlidesToShow] = useState(3);
   const [spro, setSPro] = useState("");
   const [thumbnail, setThembnail] = useState("");
-  console.log(spro)
+  // console.log(spro)
 
   const paramData = useParams();
   // console.log(paramData)
@@ -61,12 +61,13 @@ const ProductDetails = () => {
       .get("https://dummyjson.com/products")
       .then((res) => {
         setAllProduces(res.data.products);
-        // console.log(res);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
+
+  let catagoryProduct = allProductes.filter((item)=>item?.category == spro?.category)
 
   return (
     <>
@@ -317,7 +318,7 @@ const ProductDetails = () => {
 
             <div className="reco mb-[96px] px-3 lg:px-0">
               <Slider className="pt-10" {...settings}>
-                {allProductes.slice(0, 9).map((item) => (
+                {catagoryProduct.map((item) => (
                   <div>
                     <ProductCard
                       key={item.id}
