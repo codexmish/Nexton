@@ -7,9 +7,10 @@ import Recommendation from "../components/Recommendation";
 import Slider from "react-slick";
 import axios from "axios";
 import ProductCard from "../components/Common/ProductCard";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
 const ProductDetails = () => {
+  window.scrollTo(0, 0);
   const [slidesToShow, setSlidesToShow] = useState(3);
   const [spro, setSPro] = useState("");
   const [thumbnail, setThembnail] = useState("");
@@ -25,7 +26,7 @@ const ProductDetails = () => {
         setSPro(res.data), setThembnail(res.data.images?.[0]);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [paramData]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -68,6 +69,26 @@ const ProductDetails = () => {
   }, []);
 
   let catagoryProduct = allProductes.filter((item)=>item?.category == spro?.category)
+
+  const navigate = useNavigate();
+
+
+  const handleDetails =(id)=>{
+    // console.log(id)
+    navigate(`/productdetails/${id}`)
+    window.scrollTo(0, 0);
+
+  };
+
+
+  // console.log(catagoryProduct)
+
+
+
+
+
+
+
 
   return (
     <>
@@ -319,6 +340,7 @@ const ProductDetails = () => {
             <div className="reco mb-[96px] px-3 lg:px-0">
               <Slider className="pt-10" {...settings}>
                 {catagoryProduct.map((item) => (
+                  
                   <div>
                     <ProductCard
                       key={item.id}
@@ -329,8 +351,10 @@ const ProductDetails = () => {
                       rating={item.rating}
                       stock={item.stock}
                       image={item.thumbnail}
+                      detailsClick={()=>handleDetails(item.id)}
                     />
                   </div>
+                
                 ))}
               </Slider>
             </div>
