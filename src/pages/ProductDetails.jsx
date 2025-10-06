@@ -13,6 +13,7 @@ const ProductDetails = () => {
   const [slidesToShow, setSlidesToShow] = useState(3);
   const [spro, setSPro] = useState("");
   const [thumbnail, setThembnail] = useState("");
+  console.log(spro)
 
   const paramData = useParams();
   // console.log(paramData)
@@ -72,8 +73,12 @@ const ProductDetails = () => {
       <section id="productdetails" className="pt-10 pb-13">
         <div className="container">
           <div className="product-row flex justify-between flex-wrap px-3 lg:px-0">
-            {/* ------------Product image part----- */}
-            <div className="product-images flex gap-6 pb-13 border-b border-b-border flex-wrap ">
+
+            
+            <div className="product-images flex gap-6 pb-13 border-b border-b-border flex-wrap">
+
+              {/* ------------Product image part----- */}
+
               <div className="flex lg:flex-col gap-2 lg:gap-4 order-2 lg:order-0">
                 {spro.images?.map((item, index) => (
                   <button
@@ -88,7 +93,32 @@ const ProductDetails = () => {
               <div className="image w-[312px] lg:w-[640px] h-[330px] lg:h-[678px] bg-gray-200 rounded-2xl">
                 <img src={thumbnail} alt="thumbnailImage" />
               </div>
+
             </div>
+            
+
+            {/* ------------Product image skeliton--- */}
+            {/* <div className="bg-white product-images flex gap-6 pb-13 border-b border-b-border flex-wrap">
+
+              <div className="flex lg:flex-col gap-2 lg:gap-4 order-2 lg:order-0">
+                <button
+                  className="w-[70px] lg:w-[140px] h-[78px] lg:h-[157px] rounded-2xl overflow-hidden bg-gray-200 animate-pulse"
+                  aria-label="Loading image thumbnail"
+                ></button>
+                <button
+                  className="w-[70px] lg:w-[140px] h-[78px] lg:h-[157px] rounded-2xl overflow-hidden bg-gray-200 animate-pulse"
+                  aria-label="Loading image thumbnail"
+                ></button>
+                <button
+                  className="w-[70px] lg:w-[140px] h-[78px] lg:h-[157px] rounded-2xl overflow-hidden bg-gray-200 animate-pulse"
+                  aria-label="Loading image thumbnail"
+                ></button>
+              </div>
+              <div
+                className="image w-[312px] lg:w-[640px] h-[330px] lg:h-[678px] bg-gray-200 rounded-2xl animate-pulse"
+                aria-label="Loading main image"
+              ></div>
+            </div> */}
 
             {/* ------------Product options part----- */}
             <div className="product-opt w-[312px] lg:w-[460px] p-2 lg:p-8 lg:border border-[#E5E7EB] rounded-2xl h-fit">
@@ -99,9 +129,9 @@ const ProductDetails = () => {
                 <div className="flex items-center gap-1 order-2 lg:order-0 w-[300px]">
                   <FaStar className="text-[#FBBF24]" />
                   <p className="text-[12px] lg:text-base text-secoundary font-semibold font-popppind">
-                    4.9{" "}
+                    {spro.rating}{" "}
                     <span className="hidden lg:inline-block">
-                      . 142 reviews{" "}
+                      . {} reviews{" "}
                     </span>{" "}
                     <span className="lg:hidden">(98)</span>
                   </p>
@@ -109,10 +139,10 @@ const ProductDetails = () => {
 
                 <div className="price lg:text-end order-1 lg:order-0 mb-6 lg:mb-0">
                   <h2 className="text-[20px] lg:text-2xl text-primary font-semibold font-popppind">
-                    $169.99
+                    ${Math.round(spro.price - spro.price *spro.discountPercentage/100)}
                   </h2>
                   <h3 className="text-[12px] lg:text-sm text-secoundary font-medium font-popppind line-through">
-                    $199.99
+                    ${spro.price}
                   </h3>
                 </div>
               </div>
