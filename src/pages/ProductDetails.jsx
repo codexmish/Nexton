@@ -74,14 +74,13 @@ const ProductDetails = () => {
 
 
   const handleDetails =(id)=>{
-    // console.log(id)
     navigate(`/productdetails/${id}`)
     window.scrollTo(0, 0);
 
   };
 
 
-  // console.log(catagoryProduct)
+  console.log(spro)
 
 
 
@@ -96,11 +95,9 @@ const ProductDetails = () => {
         <div className="container">
           <div className="product-row flex justify-between flex-wrap px-3 lg:px-0">
 
-            
-            <div className="product-images flex gap-6 pb-13 border-b border-b-border flex-wrap">
-
+  
               {/* ------------Product image part----- */}
-
+            <div className="product-images flex gap-6 pb-13 border-b border-b-border flex-wrap">
               <div className="flex lg:flex-col gap-2 lg:gap-4 order-2 lg:order-0">
                 {spro.images?.map((item, index) => (
                   <button
@@ -145,7 +142,7 @@ const ProductDetails = () => {
             {/* ------------Product options part----- */}
             <div className="product-opt w-[312px] lg:w-[460px] p-2 lg:p-8 lg:border border-[#E5E7EB] rounded-2xl h-fit">
               <h2 className="text-2xl text-primary font-semibold font-popppind lg:hidden">
-                Black Automatic Watch
+                {spro.title}
               </h2>
               <div className="flex justify-between items-start flex-wrap mt-3">
                 <div className="flex items-center gap-1 order-2 lg:order-0 w-[300px]">
@@ -251,16 +248,13 @@ const ProductDetails = () => {
           <div className="mt-[108px] flex flex-col gap-15 px-3 lg:px-0">
             <div>
               <h2 className="text-4xl text-primary font-semibold font-popppind hidden lg:block">
-                Black Automatic Watch
+                {spro.title}
               </h2>
               <h2 className="text-[20px] lg:text-4xl text-primary font-semibold font-popppind lg:hidden">
                 About this product
               </h2>
               <p className="text-sm lg:text-base text-secoundary font-normal font-popppind max-w-[735px] mt-1">
-                The St. Louis Meramec Canoe Company was founded by Alfred
-                Wickett in 1922. Wickett had previously worked for the Old Town
-                Canoe Co from 1900 to 1914. Manufacturing of the classic wooden
-                canoes in Valley Park, Missouri ceased in 1978.
+                {spro.description}
               </p>
             </div>
 
