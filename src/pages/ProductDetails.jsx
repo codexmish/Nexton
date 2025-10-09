@@ -80,8 +80,6 @@ const ProductDetails = () => {
   };
 
 
-  console.log(spro)
-
 
 
 
@@ -95,9 +93,12 @@ const ProductDetails = () => {
         <div className="container">
           <div className="product-row flex justify-between flex-wrap px-3 lg:px-0">
 
-  
-              {/* ------------Product image part----- */}
-            <div className="product-images flex gap-6 pb-13 border-b border-b-border flex-wrap">
+
+            {
+              spro ? 
+
+              //  ------------Product image part----- 
+              <div className="product-images flex gap-6 pb-13 border-b border-b-border flex-wrap">
               <div className="flex lg:flex-col gap-2 lg:gap-4 order-2 lg:order-0">
                 {spro.images?.map((item, index) => (
                   <button
@@ -113,11 +114,11 @@ const ProductDetails = () => {
                 <img src={thumbnail} alt="thumbnailImage" />
               </div>
 
-            </div>
-            
+            </div> :
 
-            {/* ------------Product image skeliton--- */}
-            {/* <div className="bg-white product-images flex gap-6 pb-13 border-b border-b-border flex-wrap">
+            //  ------------Product image skeliton---
+
+            <div className="bg-white product-images flex gap-6 pb-13 border-b border-b-border flex-wrap">
 
               <div className="flex lg:flex-col gap-2 lg:gap-4 order-2 lg:order-0">
                 <button
@@ -137,7 +138,9 @@ const ProductDetails = () => {
                 className="image w-[312px] lg:w-[640px] h-[330px] lg:h-[678px] bg-gray-200 rounded-2xl animate-pulse"
                 aria-label="Loading main image"
               ></div>
-            </div> */}
+            </div>
+
+            }
 
             {/* ------------Product options part----- */}
             <div className="product-opt w-[312px] lg:w-[460px] p-2 lg:p-8 lg:border border-[#E5E7EB] rounded-2xl h-fit">

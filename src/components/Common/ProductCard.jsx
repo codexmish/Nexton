@@ -54,7 +54,7 @@ const ProductCard = ({
           <div className="w-full h-full group-hover:bg-[#0000008f] absolute top-0 left-0 duration-[.4s]"></div>
         </div>
         <div className="flex items-center justify-between mt-5 cursor-pointer">
-          <h2 onClick={detailsClick} className="text-base text-black font-semibold font-popppind">
+          <h2 onClick={detailsClick} className="text-base text-black font-semibold font-popppind cursor-pointer">
             
             {truncateText(title, 20)}
           </h2>
