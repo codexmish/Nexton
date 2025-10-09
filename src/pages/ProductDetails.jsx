@@ -68,79 +68,64 @@ const ProductDetails = () => {
       });
   }, []);
 
-  let catagoryProduct = allProductes.filter((item)=>item?.category == spro?.category)
+  let catagoryProduct = allProductes.filter(
+    (item) => item?.category == spro?.category
+  );
 
   const navigate = useNavigate();
 
-
-  const handleDetails =(id)=>{
-    navigate(`/productdetails/${id}`)
+  const handleDetails = (id) => {
+    navigate(`/productdetails/${id}`);
     window.scrollTo(0, 0);
-
   };
-
-
-
-
-
-
-
-
 
   return (
     <>
       <section id="productdetails" className="pt-10 pb-13">
         <div className="container">
           <div className="product-row flex justify-between flex-wrap px-3 lg:px-0">
-
-
-            {
-              spro ? 
-
-              //  ------------Product image part----- 
+            {spro ? (
+              //  ------------Product image part-----
               <div className="product-images flex gap-6 pb-13 border-b border-b-border flex-wrap">
-              <div className="flex lg:flex-col gap-2 lg:gap-4 order-2 lg:order-0">
-                {spro.images?.map((item, index) => (
+                <div className="flex lg:flex-col gap-2 lg:gap-4 order-2 lg:order-0">
+                  {spro.images?.map((item, index) => (
+                    <button
+                      onClick={() => setThembnail(item)}
+                      key={index}
+                      className="w-[70px] lg:w-[140px] h-[78px] lg:h-[157px] rounded-2xl overflow-hidden bg-gray-200"
+                    >
+                      <img src={item} alt="" />
+                    </button>
+                  ))}
+                </div>
+                <div className="image w-[312px] lg:w-[640px] h-[330px] lg:h-[678px] bg-gray-200 rounded-2xl">
+                  <img src={thumbnail} alt="thumbnailImage" />
+                </div>
+              </div>
+            ) : (
+              //  ------------Product image skeliton---
+
+              <div className="bg-white product-images flex gap-6 pb-13 border-b border-b-border flex-wrap">
+                <div className="flex lg:flex-col gap-2 lg:gap-4 order-2 lg:order-0">
                   <button
-                    onClick={() => setThembnail(item)}
-                    key={index}
-                    className="w-[70px] lg:w-[140px] h-[78px] lg:h-[157px] rounded-2xl overflow-hidden bg-gray-200"
-                  >
-                    <img src={item} alt="" />
-                  </button>
-                ))}
+                    className="w-[70px] lg:w-[140px] h-[78px] lg:h-[157px] rounded-2xl overflow-hidden bg-gray-200 animate-pulse"
+                    aria-label="Loading image thumbnail"
+                  ></button>
+                  <button
+                    className="w-[70px] lg:w-[140px] h-[78px] lg:h-[157px] rounded-2xl overflow-hidden bg-gray-200 animate-pulse"
+                    aria-label="Loading image thumbnail"
+                  ></button>
+                  <button
+                    className="w-[70px] lg:w-[140px] h-[78px] lg:h-[157px] rounded-2xl overflow-hidden bg-gray-200 animate-pulse"
+                    aria-label="Loading image thumbnail"
+                  ></button>
+                </div>
+                <div
+                  className="image w-[312px] lg:w-[640px] h-[330px] lg:h-[678px] bg-gray-200 rounded-2xl animate-pulse"
+                  aria-label="Loading main image"
+                ></div>
               </div>
-              <div className="image w-[312px] lg:w-[640px] h-[330px] lg:h-[678px] bg-gray-200 rounded-2xl">
-                <img src={thumbnail} alt="thumbnailImage" />
-              </div>
-
-            </div> :
-
-            //  ------------Product image skeliton---
-
-            <div className="bg-white product-images flex gap-6 pb-13 border-b border-b-border flex-wrap">
-
-              <div className="flex lg:flex-col gap-2 lg:gap-4 order-2 lg:order-0">
-                <button
-                  className="w-[70px] lg:w-[140px] h-[78px] lg:h-[157px] rounded-2xl overflow-hidden bg-gray-200 animate-pulse"
-                  aria-label="Loading image thumbnail"
-                ></button>
-                <button
-                  className="w-[70px] lg:w-[140px] h-[78px] lg:h-[157px] rounded-2xl overflow-hidden bg-gray-200 animate-pulse"
-                  aria-label="Loading image thumbnail"
-                ></button>
-                <button
-                  className="w-[70px] lg:w-[140px] h-[78px] lg:h-[157px] rounded-2xl overflow-hidden bg-gray-200 animate-pulse"
-                  aria-label="Loading image thumbnail"
-                ></button>
-              </div>
-              <div
-                className="image w-[312px] lg:w-[640px] h-[330px] lg:h-[678px] bg-gray-200 rounded-2xl animate-pulse"
-                aria-label="Loading main image"
-              ></div>
-            </div>
-
-            }
+            )}
 
             {/* ------------Product options part----- */}
             <div className="product-opt w-[312px] lg:w-[460px] p-2 lg:p-8 lg:border border-[#E5E7EB] rounded-2xl h-fit">
@@ -161,7 +146,10 @@ const ProductDetails = () => {
 
                 <div className="price lg:text-end order-1 lg:order-0 mb-6 lg:mb-0">
                   <h2 className="text-[20px] lg:text-2xl text-primary font-semibold font-popppind">
-                    ${Math.round(spro.price - spro.price *spro.discountPercentage/100)}
+                    $
+                    {Math.round(
+                      spro.price - (spro.price * spro.discountPercentage) / 100
+                    )}
                   </h2>
                   <h3 className="text-[12px] lg:text-sm text-secoundary font-medium font-popppind line-through">
                     ${spro.price}
@@ -337,7 +325,6 @@ const ProductDetails = () => {
             <div className="reco mb-[96px] px-3 lg:px-0">
               <Slider className="pt-10" {...settings}>
                 {catagoryProduct.map((item) => (
-                  
                   <div>
                     <ProductCard
                       key={item.id}
@@ -348,10 +335,9 @@ const ProductDetails = () => {
                       rating={item.rating}
                       stock={item.stock}
                       image={item.thumbnail}
-                      detailsClick={()=>handleDetails(item.id)}
+                      detailsClick={() => handleDetails(item.id)}
                     />
                   </div>
-                
                 ))}
               </Slider>
             </div>
