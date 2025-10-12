@@ -10,7 +10,6 @@ const Sellers = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      // console.log(window)
       const w = window.innerWidth;
       if (w <= 360) setSlidesToShow(1);
       else if (w <= 620) setSlidesToShow(1);
@@ -42,21 +41,17 @@ const Sellers = () => {
       .get("https://dummyjson.com/products")
       .then((res) => {
         setAllProduces(res.data.products);
-        // console.log(res);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
 
-
   const navigate = useNavigate();
-  
-  
-    const handleDetails =(id)=>{
-      navigate(`/productdetails/${id}`)
-  
-    };
+
+  const handleDetails = (id) => {
+    navigate(`/productdetails/${id}`);
+  };
 
   return (
     <>
@@ -79,7 +74,7 @@ const Sellers = () => {
                   rating={item.rating}
                   stock={item.stock}
                   image={item.thumbnail}
-                  detailsClick={()=>handleDetails(item.id)}
+                  detailsClick={() => handleDetails(item.id)}
                 />
               </div>
             ))}

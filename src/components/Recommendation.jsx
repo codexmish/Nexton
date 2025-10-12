@@ -10,7 +10,6 @@ const Recommendation = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      // console.log(window)
       const w = window.innerWidth;
       if (w <= 360) setSlidesToShow(1);
       else if (w <= 620) setSlidesToShow(1);
@@ -42,7 +41,6 @@ const Recommendation = () => {
       .get("https://dummyjson.com/products")
       .then((res) => {
         setAllProduces(res.data.products);
-        // console.log(res);
       })
       .catch((err) => {
         console.log(err);
@@ -90,22 +88,6 @@ const Recommendation = () => {
               </div>
             ))}
           </Slider>
-
-          {/* {allProductes.slice(0, 9).map((item) => (
-            
-            <div>
-              <ProductCard
-                key={item.id}
-                title={item.title}
-                price={item.price}
-                category={item.category}
-                discount={item.discountPercentage}
-                rating={item.rating}
-                stock={item.stock}
-                image={item.thumbnail}
-              />
-            </div>
-          ))} */}
         </div>
       </section>
     </>
