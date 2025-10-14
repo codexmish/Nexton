@@ -1,7 +1,57 @@
-import React from "react";
+import React, { useState } from "react";
 import CommonHead from "../components/Common/CommonHead";
 
 const Register = () => {
+
+
+  const ragex = {
+    email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+    pass: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
+  }
+
+
+  const [formdata, setFormData] = useState({
+    email: null,
+    password: null,
+    role: "ADMIN",
+    username: null,
+    confrimPassword: null,
+  });
+
+  console.log(formdata)
+
+
+  const [allError, setAllError] = useState({
+    emailError: "border-gray-300",
+    // nameError: "border-border",
+    passwordError: "border-border",
+    confirmPasswordError: "border-border",
+  });
+
+
+  const handleRegister = (e)=>{
+    e.preventDefault();
+
+    if(!ragex.email.test(formdata.email)){
+      setAllError((prev) => ({ ...prev, emailError: "border-red-500" }));
+    }
+    if(!ragex.pass.test(formdata.password)){
+      setAllError((prev) => ({ ...prev, passwordError: "border-red-500" }));
+    }
+    if(formdata.password !== formdata.confrimPassword || !formdata.confrimPassword){
+      return setAllError((prev) => ({
+        ...prev,
+        confirmPasswordError: "border-red-500",
+      }));
+    }
+
+
+  }
+
+
+
+
+
   return (
     <>
       <div className="flex items-center justify-center">
@@ -12,25 +62,25 @@ const Register = () => {
         </div>
 
         <div>
-            <form className="flex flex-col gap-6" action="">
+            <form onSubmit={handleRegister} className="flex flex-col gap-6" action="">
                 <div>
                     <label className="text-base text-black font-popppind font-semibold mb-2">Email</label>
-                    <div className="w-[440px] h-11 border border-border flex items-center rounded-[12px]">
-                        <input className="text-base text-black font-popppind font-normal border-none outline-none ml-4" type="text" />
+                    <div className={`w-[440px] h-11 border ${allError.emailError} flex items-center rounded-[12px]`}>
+                        <input onChange={(e)=>{setFormData((prev)=>({...prev, email: e.target.value,}))}} className="text-base text-black font-popppind font-normal border-none outline-none ml-4" type="text" />
                     </div>
                 </div>
 
                 <div>
                     <label className="text-base text-black font-popppind font-semibold mb-2">Password</label>
-                    <div className="w-[440px] h-11 border border-border flex items-center rounded-[12px]">
-                        <input className="text-base text-black font-popppind font-normal border-none outline-none ml-4" type="password" />
+                    <div className={`w-[440px] h-11 border ${allError.passwordError} flex items-center rounded-[12px]`}>
+                        <input onChange={(e)=>{setFormData((prev)=>({...prev, password: e.target.value,}))}} className="text-base text-black font-popppind font-normal border-none outline-none ml-4" type="password" />
                     </div>
                 </div>
 
                 <div>
                     <label className="text-base text-black font-popppind font-semibold mb-2">Password (Again)</label>
-                    <div className="w-[440px] h-11 border border-border flex items-center rounded-[12px]">
-                        <input className="text-base text-black font-popppind font-normal border-none outline-none ml-4" type="password" />
+                    <div className={`w-[440px] h-11 border ${allError.confirmPasswordError} flex items-center rounded-[12px]`}>
+                        <input onChange={(e)=>{setFormData((prev)=>({...prev, confrimPassword: e.target.value,}))}} className="text-base text-black font-popppind font-normal border-none outline-none ml-4" type="password" />
                     </div>
                 </div>
 
