@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import CommonHead from "../components/Common/CommonHead";
+import axios from "axios";
 
 const Register = () => {
 
 
   const ragex = {
     email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-    pass: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
+    pass: /^.{6,}$/
   }
 
 
@@ -32,10 +33,10 @@ const Register = () => {
   const handleRegister = (e)=>{
     e.preventDefault();
 
-    if(!ragex.email.test(formdata.email)){
+    if(!ragex.email.test(formdata.email)|| !formdata.email){
       setAllError((prev) => ({ ...prev, emailError: "border-red-500" }));
     }
-    if(!ragex.pass.test(formdata.password)){
+    if(!ragex.pass.test(formdata.password)|| !formdata.password){
       setAllError((prev) => ({ ...prev, passwordError: "border-red-500" }));
     }
     if(formdata.password !== formdata.confrimPassword || !formdata.confrimPassword){
@@ -44,6 +45,18 @@ const Register = () => {
         confirmPasswordError: "border-red-500",
       }));
     }
+
+    axios.post('https://api.freeapi.app/api/v1/users/register',{
+    email: formdata.email,
+    password: formdata.password,
+    role: "ADMIN",
+    username: null,
+    confrimPassword: null,
+  },
+  {headers: {accept: 'application/json', 'content-type': 'application/json'},})
+
+  .then((res)=>{console.log(res)})
+  .catch((err)=>{console.log(err)})
 
 
   }
@@ -54,7 +67,7 @@ const Register = () => {
 
   return (
     <>
-      <div className="flex items-center justify-center">
+      <section className="flex items-center justify-center mt-10 mb-18">
         <div>
 
         <div className="text-center mb-15">
@@ -66,7 +79,7 @@ const Register = () => {
                 <div>
                     <label className="text-base text-black font-popppind font-semibold mb-2">Email</label>
                     <div className={`w-[440px] h-11 border ${allError.emailError} flex items-center rounded-[12px]`}>
-                        <input onChange={(e)=>{setFormData((prev)=>({...prev, email: e.target.value,}))}} className="text-base text-black font-popppind font-normal border-none outline-none ml-4" type="text" />
+                        <input onChange={(e)=>{setFormData((prev)=>({...prev, email: e.target.value,}))}} className="text-base text-black font-popppind font-normal border-none outline-none ml-4" type="email" />
                     </div>
                 </div>
 
@@ -88,7 +101,7 @@ const Register = () => {
             </form>
         </div>
         </div>
-      </div>
+      </section>
     </>
   );
 };
