@@ -15,7 +15,7 @@ const Register = () => {
     email: null,
     password: null,
     role: "ADMIN",
-    username: null,
+    username: 'hahaha',
     confrimPassword: null,
   });
 
@@ -46,15 +46,14 @@ const Register = () => {
       }));
     }
 
-    axios.post('https://api.freeapi.app/api/v1/users/register',{
+    axios.post(`https://api.freeapi.app/api/v1/users/register`,{
     email: formdata.email,
     password: formdata.password,
     role: "ADMIN",
-    username: null,
+    username: formdata.email.slice(0,4),
     confrimPassword: null,
   },
   {headers: {accept: 'application/json', 'content-type': 'application/json'},})
-
   .then((res)=>{console.log(res)})
   .catch((err)=>{console.log(err)})
 
