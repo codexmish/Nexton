@@ -5,22 +5,58 @@ import { Link } from "react-router";
 
 const Login = () => {
   const [formdata, setFormData] = useState({
-    email: null,
     password: null,
-    role: "ADMIN",
-    username: "hahaha",
+    username: null,
   });
 
-  console.log(formdata);
+  console.log(formdata)
+
 
   const [allError, setAllError] = useState({
-    emailError: "border-gray-300",
-    passwordError: "border-border",
+    usernameError: "border-gray-300",
+    passwordError: "border-gray-300",
   });
 
-  const handleLogin = (e) => {
-    e.preventDefault();
+
+  const options = {
+  method: 'POST',
+  url: 'https://api.freeapi.app/api/v1/users/login',
+  headers: {accept: 'application/json', 'content-type': 'application/json'},
+  data: {password: formdata.password, username: formdata.username}
+
+};
+
+
+
+
+
+  const handleLogin = async (e) => {
+    try{
+      e.preventDefault();
+
+    if (!formdata.username) {
+      setAllError((prev) => ({ ...prev, usernameError: "border-red-500" }));
+    }
+    if (!formdata.password) {
+      return setAllError((prev) => ({
+        ...prev,
+        passwordError: "border-red-500",
+      }));
+    }
+
+
+
+    const myData= await axios.request(options);
+    console.log(myData)
+    }catch(err){
+      console.log(err)
+    }
   };
+
+
+
+
+
 
   return (
     <>
@@ -38,20 +74,20 @@ const Login = () => {
             >
               <div>
                 <label className="text-base text-black font-popppind font-semibold mb-2">
-                  Email
+                  Username
                 </label>
                 <div
-                  className={`w-[440px] h-11 border ${allError.emailError} flex items-center rounded-[12px]`}
+                  className={`w-[440px] h-11 border ${allError.usernameError} flex items-center rounded-[12px]`}
                 >
                   <input
                     onChange={(e) => {
                       setFormData((prev) => ({
                         ...prev,
-                        email: e.target.value,
+                        username: e.target.value,
                       }));
                     }}
                     className="text-base text-black font-popppind font-normal border-none outline-none ml-4"
-                    type="email"
+                    type="text"
                   />
                 </div>
               </div>

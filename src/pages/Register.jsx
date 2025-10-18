@@ -20,8 +20,8 @@ const Register = () => {
   console.log(formdata);
 
   const [allError, setAllError] = useState({
-    emailError: "border-gray-300",
-    // nameError: "border-border",
+    emailError: "border-border",
+    nameError: "border-border",
     passwordError: "border-border",
     confirmPasswordError: "border-border",
   });
@@ -51,7 +51,7 @@ const Register = () => {
         {
           email: formdata.email,
           password: formdata.password,
-          role: "ADMIN",
+          role: 'ADMIN',
           username: formdata.email.slice(0, 4),
           confrimPassword: null,
         },
@@ -84,6 +84,26 @@ const Register = () => {
               className="flex flex-col gap-6"
               action=""
             >
+              <div>
+                <label className="text-base text-black font-popppind font-semibold mb-2">
+                  Username
+                </label>
+                <div
+                  className={`w-[440px] h-11 border ${allError.nameError} flex items-center rounded-[12px]`}
+                >
+                  <input
+                    onChange={(e) => {
+                      setFormData((prev) => ({
+                        ...prev,
+                        username: e.target.value,
+                      }));
+                    }}
+                    className="text-base text-black font-popppind font-normal border-none outline-none w-full ml-4"
+                    type="text"
+                  />
+                </div>
+              </div>
+
               <div>
                 <label className="text-base text-black font-popppind font-semibold mb-2">
                   Email
