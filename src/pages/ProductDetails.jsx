@@ -8,6 +8,7 @@ import Slider from "react-slick";
 import axios from "axios";
 import ProductCard from "../components/Common/ProductCard";
 import { useNavigate, useParams } from "react-router";
+import BreadCrums from "../components/Common/BreadCrums";
 
 const ProductDetails = () => {
   window.scrollTo(0, 0);
@@ -83,6 +84,10 @@ const ProductDetails = () => {
     <>
       <section id="productdetails" className="pt-10 pb-13">
         <div className="container">
+          <div className="mb-10">
+            <BreadCrums pageLink={"/productdetails"} pagename={'Product'} currntpagename={`${spro.title}`}/>
+          </div>
+
           <div className="product-row flex justify-between flex-wrap px-3 lg:px-0">
             {spro ? (
               //  ------------Product image part-----
