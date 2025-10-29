@@ -53,6 +53,7 @@ const AllProducts = () => {
               total={allProducts?.total}
               align={"end"}
               onChange={onShowChange}
+              pageSizeOptions={[12,24,40,52,100]}
             />
           </div>
         </div>
