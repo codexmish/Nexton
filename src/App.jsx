@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import ProductDetails from './pages/ProductDetails'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import AllProducts from './pages/AllProducts'
 
 const App = () => {
 
@@ -15,6 +16,7 @@ const App = () => {
       <Route path='/productdetails/:next' element={<ProductDetails/>} />
       <Route path='/login' element={<Login/>}/>
       <Route path='/register' element={<Register/>}/>
+      <Route path='/allProducts' element={<AllProducts/>}/>
 
 
     </Route>
