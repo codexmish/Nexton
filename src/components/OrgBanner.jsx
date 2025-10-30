@@ -17,7 +17,10 @@ const OrgBanner = () => {
             <h3 className="text-[20px] text-[#4B5563] font-medium font-popppind">
               Starting from: $59.99
             </h3>
-            <Link className="text-[16px] text-white font-medium font-popppind bg-[#111827] w-[144px] h-[52px] flex justify-center items-center rounded-[50px]">
+            <Link
+              to={"/latest"}
+              className="text-[16px] text-white font-medium font-popppind bg-[#111827] w-[144px] h-[52px] flex justify-center items-center rounded-[50px]"
+            >
               Shop now
             </Link>
           </div>

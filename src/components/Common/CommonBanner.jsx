@@ -16,7 +16,7 @@ const CommonBanner = ({ hero, textOne, textTwo }) => {
                 {textTwo}
               </h2>
               <Link
-                to={"/"}
+                to={"/allProducts"}
                 className="flex justify-center items-center bg-primary text-white w-[156px] lg:w-[198px] h-11 lg:h-[64px] rounded-[9999px] gap-3 text-sm lg:text-[16px]"
               >
                 Explore now <CiSearch className="text-xl lg:text-[24px]  text-white" />
