@@ -7,6 +7,7 @@ import ProductDetails from './pages/ProductDetails'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import AllProducts from './pages/AllProducts'
+import LatestProducts from './components/LatestProducts'
 
 const App = () => {
 
@@ -17,6 +18,7 @@ const App = () => {
       <Route path='/login' element={<Login/>}/>
       <Route path='/register' element={<Register/>}/>
       <Route path='/allProducts' element={<AllProducts/>}/>
+      <Route path='/latest' element={<LatestProducts/>}/>
 
 
     </Route>
