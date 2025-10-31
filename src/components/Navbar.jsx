@@ -10,14 +10,15 @@ import axios from "axios";
 const Navbar = () => {
   const [showCart, setShowCart] = useState(false);
   const [showRes, setShowRes] = useState(false);
+  const [active, setActive] = useState(false);
   const [searchResult, setSearchResult] = useState([]);
+  const [seachInput, setSeachInput] = useState("");
   const navigate = useNavigate();
 
-
-  const handleSearch = (data) => {
+  const handleSearch = () => {
     setTimeout(() => {
       axios
-        .get(`https://dummyjson.com/products/search?q=${data}`)
+        .get(`https://dummyjson.com/products/search?q=${seachInput}`)
         .then((res) => {
           setSearchResult(res.data.products);
           setShowRes(true);
@@ -26,13 +27,11 @@ const Navbar = () => {
     }, 500);
   };
 
-
-  const handleNavigate = (id)=>{
-    navigate(`/productdetails/${id}`)
-  }
-
-
-
+  const handleNavigate = (id) => {
+    setShowRes(false);
+    navigate(`/productdetails/${id}`);
+    setSeachInput("");
+  };
 
   return (
     <>
@@ -48,8 +47,11 @@ const Navbar = () => {
             <div className="serch-box flex items-center gap-3 border-none outline-none bg-[#F8F8F8] w-100 h-13 px-6 py-4 rounded-3xl relative">
               <CiSearch className="text-2xl text-secoundary" />
               <input
-                onChange={(e) => handleSearch(e.target.value)}
+                onChange={(e) => {
+                  setSeachInput(e.target.value), handleSearch();
+                }}
                 type="text"
+                value={seachInput}
                 placeholder="Search in products..."
                 className="border-none outline-none w-full text-[14px] text-primary font-normal font-popppind placeholder:text-secoundary"
               />
@@ -58,7 +60,7 @@ const Navbar = () => {
                 <div className="w-full max-h-[600px] overflow-y-scroll bg-gray-300 top-20 absolute z-10 rounded-[10px]">
                   {searchResult?.map((item, key) => (
                     <div
-                    onClick={()=>handleNavigate(item.id)}
+                      onClick={() => handleNavigate(item.id)}
                       className="w-full h-15 px-4 flex items-center cursor-pointer gap-4"
                       key={key}
                     >
