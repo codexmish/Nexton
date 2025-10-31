@@ -195,14 +195,21 @@ const ProductDetails = () => {
                 <div className="py-[2px] lg:py-2 px-[6px] lg:px-3 rounded-[9999px] bg-[#E5E7EB] flex gap-4 items-center">
                   <button
                     className="w-5 lg:w-6 h-5 lg:h-6 rounded-full border border-[#E5E7EB] bg-white flex justify-center items-center"
-                    onClick={() => setQty(qty + 1)}
+                    
+                    onClick={() => {
+                      if(qty==1){
+                        alert("brooh")
+                      }else{
+                        setQty(qty - 1)
+                      }
+                    }}
                   >
                     <FaMinus className="text-[12px] lg:text-sm text-primary font-normal" />
                   </button>
                   <h2 className="text-base text-primary font-medium font-popppind">
                     {qty}
                   </h2>
-                  <button className="w-5 lg:w-6 h-5 lg:h-6 rounded-full border border-[#E5E7EB] bg-white flex justify-center items-center">
+                  <button className="w-5 lg:w-6 h-5 lg:h-6 rounded-full border border-[#E5E7EB] bg-white flex justify-center items-center" onClick={() => setQty(qty + 1)}>
                     <FaPlus className="text-[12px] lg:text-sm text-primary" />
                   </button>
                 </div>
