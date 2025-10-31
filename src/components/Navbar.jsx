@@ -9,19 +9,18 @@ import axios from "axios";
 
 const Navbar = () => {
   const [showCart, setShowCart] = useState(false);
-  const [showRes, setShowRes] = useState(false)
-  const [searchResult, setSearchResult] = useState([])
+  const [showRes, setShowRes] = useState(false);
+  const [searchResult, setSearchResult] = useState([]);
 
-  console.log(searchResult)
+  console.log(searchResult);
 
   const handleSearch = (data) => {
-
     setTimeout(() => {
       axios
         .get(`https://dummyjson.com/products/search?q=${data}`)
         .then((res) => {
-          setSearchResult(res.data.products)
-          setShowRes(true)
+          setSearchResult(res.data.products);
+          setShowRes(true);
         })
         .catch((err) => console.log(err));
     }, 500);
@@ -46,34 +45,29 @@ const Navbar = () => {
                 placeholder="Search in products..."
                 className="border-none outline-none w-full text-[14px] text-primary font-normal font-popppind placeholder:text-secoundary"
               />
-              {
-              showRes&&
-              <div className="w-full max-h-[600px] overflow-y-scroll bg-gray-300 top-20 absolute z-10 rounded-[10px]">
-
-                {
-                searchResult?.map((item, key)=>(
-
-              <div className="w-full h-15 px-4 flex items-center gap-4" key={key}>
-                <div className="img w-10 h-10 rounded-[5px] bg-gray-500">
-                  <img src={item.thumbnail} alt="" />
+              {showRes && (
+                // ---------Search resullt
+                <div className="w-full max-h-[600px] overflow-y-scroll bg-gray-300 top-20 absolute z-10 rounded-[10px]">
+                  {searchResult?.map((item, key) => (
+                    <div
+                      className="w-full h-15 px-4 flex items-center gap-4"
+                      key={key}
+                    >
+                      <div className="img w-10 h-10 rounded-[5px">
+                        <img src={item.thumbnail} alt="" />
+                      </div>
+                      <div>
+                        <h2 className="text-base text-primary font-medium font-popppind">
+                          {item.title}
+                        </h2>
+                        <p className=" text-xs text-primary font-medium font-popppind">
+                          {item.category}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-                <div>
-                  <h2 className="text-base text-primary font-medium font-popppind">
-                  {item.title}
-                </h2>
-                <p className=" text-xs text-primary font-medium font-popppind">
-                  {item.category}
-                </p>
-                </div>
-              </div>
-                ))
-                }
-
-
-
-              </div>
-              }
-
+              )}
             </div>
 
             <div className="icons flex items-center gap-6">
