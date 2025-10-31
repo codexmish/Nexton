@@ -3,7 +3,7 @@ import logo from "../assets/images/logo.png";
 import { CiSearch } from "react-icons/ci";
 import { RiUserLine } from "react-icons/ri";
 import { BsCartDash } from "react-icons/bs";
-import { Link } from "react-router";
+import { Link, useNavigate, useParams } from "react-router";
 import Cart from "./Cart";
 import axios from "axios";
 
@@ -11,8 +11,8 @@ const Navbar = () => {
   const [showCart, setShowCart] = useState(false);
   const [showRes, setShowRes] = useState(false);
   const [searchResult, setSearchResult] = useState([]);
+  const navigate = useNavigate();
 
-  console.log(searchResult);
 
   const handleSearch = (data) => {
     setTimeout(() => {
@@ -25,6 +25,14 @@ const Navbar = () => {
         .catch((err) => console.log(err));
     }, 500);
   };
+
+
+  const handleNavigate = (id)=>{
+    navigate(`/productdetails/${id}`)
+  }
+
+
+
 
   return (
     <>
@@ -50,7 +58,8 @@ const Navbar = () => {
                 <div className="w-full max-h-[600px] overflow-y-scroll bg-gray-300 top-20 absolute z-10 rounded-[10px]">
                   {searchResult?.map((item, key) => (
                     <div
-                      className="w-full h-15 px-4 flex items-center gap-4"
+                    onClick={()=>handleNavigate(item.id)}
+                      className="w-full h-15 px-4 flex items-center cursor-pointer gap-4"
                       key={key}
                     >
                       <div className="img w-10 h-10 rounded-[5px">
