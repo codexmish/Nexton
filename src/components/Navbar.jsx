@@ -5,9 +5,21 @@ import { RiUserLine } from "react-icons/ri";
 import { BsCartDash } from "react-icons/bs";
 import { Link } from "react-router";
 import Cart from "./Cart";
+import axios from "axios";
 
 const Navbar = () => {
   const [showCart, setShowCart] = useState(false);
+
+  const handleSearch = (data) => {
+    // console.log(data)
+
+    setTimeout(() => {
+      axios
+        .get(`https://dummyjson.com/products/search?q=${data}`)
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
+    }, 500);
+  };
 
   return (
     <>
@@ -18,12 +30,15 @@ const Navbar = () => {
               <img src={logo} alt="logo" />
             </Link>
 
+            {/* ---------Input------ */}
+
             <div className="serch-box flex items-center gap-3 border-none outline-none bg-[#F8F8F8] w-100 h-13 px-6 py-4 rounded-3xl">
               <CiSearch className="text-2xl text-secoundary" />
               <input
+                onChange={(e) => handleSearch(e.target.value)}
                 type="text"
                 placeholder="Search in products..."
-                className="border-none outline-none text-[14px] text-primary font-normal font-popppind placeholder:text-secoundary"
+                className="border-none outline-none w-full text-[14px] text-primary font-normal font-popppind placeholder:text-secoundary"
               />
             </div>
 
