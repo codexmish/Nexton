@@ -3,7 +3,6 @@ import { BsStars } from "react-icons/bs";
 import { FaMinus, FaPlus, FaStar } from "react-icons/fa";
 import { HiShoppingBag } from "react-icons/hi";
 import CommonHead from "../components/Common/CommonHead";
-import Recommendation from "../components/Recommendation";
 import Slider from "react-slick";
 import axios from "axios";
 import ProductCard from "../components/Common/ProductCard";
@@ -15,7 +14,8 @@ const ProductDetails = () => {
   const [slidesToShow, setSlidesToShow] = useState(3);
   const [spro, setSPro] = useState("");
   const [thumbnail, setThembnail] = useState("");
-  // console.log(spro)
+  const [qty, setQty] = useState(1);
+  console.log(spro);
 
   const paramData = useParams();
   // console.log(paramData)
@@ -85,7 +85,11 @@ const ProductDetails = () => {
       <section id="productdetails" className="pt-10 pb-13">
         <div className="container">
           <div className="mb-10">
-            <BreadCrums pageLink={"/productdetails"} pagename={'Product'} currntpagename={`${spro.title}`}/>
+            <BreadCrums
+              pageLink={"/productdetails"}
+              pagename={"Product"}
+              currntpagename={`${spro.title}`}
+            />
           </div>
 
           <div className="product-row flex justify-between flex-wrap px-3 lg:px-0">
@@ -189,11 +193,14 @@ const ProductDetails = () => {
               <div className="flex justify-between">
                 {/* QTY */}
                 <div className="py-[2px] lg:py-2 px-[6px] lg:px-3 rounded-[9999px] bg-[#E5E7EB] flex gap-4 items-center">
-                  <button className="w-5 lg:w-6 h-5 lg:h-6 rounded-full border border-[#E5E7EB] bg-white flex justify-center items-center">
+                  <button
+                    className="w-5 lg:w-6 h-5 lg:h-6 rounded-full border border-[#E5E7EB] bg-white flex justify-center items-center"
+                    onClick={() => setQty(qty + 1)}
+                  >
                     <FaMinus className="text-[12px] lg:text-sm text-primary font-normal" />
                   </button>
                   <h2 className="text-base text-primary font-medium font-popppind">
-                    1
+                    {qty}
                   </h2>
                   <button className="w-5 lg:w-6 h-5 lg:h-6 rounded-full border border-[#E5E7EB] bg-white flex justify-center items-center">
                     <FaPlus className="text-[12px] lg:text-sm text-primary" />
@@ -212,7 +219,12 @@ const ProductDetails = () => {
                 <div className="det flex items-center justify-between mt-8 pb-4 border-b border-b-border">
                   <div className="l-text mb-[10px]">
                     <p className="text-base text-secoundary font-normal font-popppind">
-                      $169.99 x 1
+                      $
+                      {Math.round(
+                        spro.price -
+                          (spro.price * spro.discountPercentage) / 100
+                      )}{" "}
+                      x {qty}
                     </p>
                     <p className="text-base text-secoundary font-normal font-popppind">
                       Tax estimate
@@ -220,7 +232,10 @@ const ProductDetails = () => {
                   </div>
                   <div className="r-text mb-[10px] text-end">
                     <p className="text-base text-secoundary font-normal font-popppind">
-                      $169.99
+                      {(Math.round(
+                        spro.price -
+                          (spro.price * spro.discountPercentage) / 100
+                      ))*qty}
                     </p>
                     <p className="text-base text-secoundary font-normal font-popppind">
                       $0
@@ -232,7 +247,10 @@ const ProductDetails = () => {
                     Total
                   </h2>
                   <h2 className="text-base text-primary font-semibold font-popppind">
-                    $169.99
+                    {(Math.round(
+                        spro.price -
+                          (spro.price * spro.discountPercentage) / 100
+                      ))*qty}
                   </h2>
                 </div>
               </div>
