@@ -3,14 +3,13 @@ import logo from "../assets/images/logo.png";
 import { CiSearch } from "react-icons/ci";
 import { RiUserLine } from "react-icons/ri";
 import { BsCartDash } from "react-icons/bs";
-import { Link, useNavigate, useParams } from "react-router";
+import { Link, useNavigate} from "react-router";
 import Cart from "./Cart";
 import axios from "axios";
 
 const Navbar = () => {
   const [showCart, setShowCart] = useState(false);
   const [showRes, setShowRes] = useState(false);
-  const [active, setActive] = useState(false);
   const [searchResult, setSearchResult] = useState([]);
   const [seachInput, setSeachInput] = useState("");
   const navigate = useNavigate();
